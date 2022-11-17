@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <!-- 숙제 - 네이버 최근검색어 내역을 직접 만들어보기 -->
+  <div id="search" class="search_area">
+
+    <form id="sform" name="sform" action="https://search.naver.com/search.naver" method="get" role="search">
+      <fieldset>
+        <legend class="blind">검색</legend>
+        <div class="green_window">
+          <input id="query" name="query" type="text" maxlength="255" class="input_text" tabindex="1" autocomplete="off"
+            placeholder="검색어를 입력해 주세요.">
+        </div>
+        <button id="search_btn" type="submit" title="검색" tabindex="3" class="btn_submit">
+          <span class="blind">검색</span>
+          <span class="ico_search_submit"></span>
+        </button>
+      </fieldset>
+    </form>
+
+    <div class="autocomplete">
+      <!-- 자동완성 열린 경우 fold 클래스 추가, 딤드인 경우 dim 추가 -->
+      <a href="#" role="button" id="nautocomplete" tabindex="2" class="btn_arw _btn_arw fold" aria-pressed="true"
+        data-atcmp-element="">
+        <span class="blind">자동완성 레이어</span>
+        <span class="ico_arr"></span>
+      </a>
+    </div>
+
+    <div id="autoFrame" class="reatcmp">
+      <div class="api_atcmp_wrap">
+        <div class="atcmp_fixer _recent_layer" style="display: block;">
+          <div class="_recent_header atcmp_header">
+            <strong class="tit">최근검색어</strong>
+            <div class="option">
+              <a role="button" href="#" class="item _delAll" aria-pressed="false">전체삭제</a>
+            </div>
+          </div>
+          <div class="atcmp_container">
+            <!-- 최근검색 기록 -->
+            <ul class="kwd_lst _recent">
+              <!-- <li class="item _item over" data-rank="1" data-template-type="history" data-keyword="스파르타 코딩클럽 웹 퍼블리싱">
+                <a href="#" class="kwd">
+                  <span class="fix">
+                    <span class="common_ico_kwd"><i class="imsc ico_search"></i></span>
+                    <span>스파르타 코딩클럽 웹 퍼블리싱</span>
+                  </span>
+                </a>
+                <span class="etc">
+                  <em class="date">07.21.</em>
+                  <a href="#" role="button" class="bt_item _del" aria-pressed="false"><i class="imsc ico_del">삭제</i></a>
+                </span>
+              </li>
+              <li class="item _item" data-rank="2" data-template-type="history" data-keyword="스파르타 코딩클럽">
+                <a href="#" class="kwd">
+                  <span class="fix">
+                    <span class="common_ico_kwd"><i class="imsc ico_search"></i></span>
+                    <span>스파르타 코딩클럽</span>
+                  </span>
+                </a>
+                <span class="etc">
+                  <em class="date">07.21.</em>
+                  <a href="#" role="button" class="bt_item _del" aria-pressed="false"><i class="imsc ico_del">삭제</i></a>
+                </span>
+              </li>
+              <li class="item _item" data-rank="3" data-template-type="history" data-keyword="스파르타 코딩">
+                <a href="#" class="kwd">
+                  <span class="fix">
+                    <span class="common_ico_kwd"><i class="imsc ico_search"></i></span>
+                    <span>스파르타 코딩</span>
+                  </span>
+                </a>
+                <span class="etc">
+                  <em class="date">07.17.</em>
+                  <a href="#" role="button" class="bt_item _del" aria-pressed="false"><i class="imsc ico_del">삭제</i></a>
+                </span>
+              </li> -->
+            </ul>
+            <!-- 자동저장 끄기 후에 보여지는 화면-->
+            <div class="kwd_info kwd_off _offMsg" style="display: none;">
+              검색어 저장 기능이 꺼져 있습니다.<br>
+              <span class="kwd_dsc">설정이 초기화 된다면 <a href="https://help.naver.com/support/alias/search/word/word_29.naver" class="kwd_help" data-clk="sly.help" target="_blank">도움말</a>을 확인해주세요.</span>
+            </div>
+            <!-- 전체삭제 후에 보여지는 화면-->
+            <div class="kwd_info kwd_none _recentNone" style="display: none;">최근 검색어 내역이 없습니다.<br><span class="kwd_dsc">설정이 초기화 된다면 <a href="https://help.naver.com/support/alias/search/word/word_29.naver" class="kwd_help" data-clk="sly.help" target="_blank">도움말</a>을 확인해주세요.</span></div>
+          </div>
+          <div class="atcmp_footer">
+            <span class="side_opt_area">
+              <span class="opt_item">
+                <a href="https://help.naver.com/support/service/main.help?serviceNo=605&amp;categoryNo=1991"
+                  data-clk="sly.help" target="_blank">도움말</a>
+              </span>
+            </span>
+            <span class="rside_opt_area">
+              <span class="opt_item">
+                <a href="#" class="close _keywordOnOff">자동저장 끄기</a>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="recentSearch.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
